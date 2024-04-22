@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require ('dotenv').config()
 
 const express = require('express')
@@ -12,11 +13,24 @@ const createUserloginRouter = require('./routes/create_userlogin')
 const createRestaurantRouter = require('./routes/create_restaurant')
 const createTableRouter = require('./routes/create_table')
 
+=======
+require('dotenv').config()
+
+const bodyParser = require('body-parser')
+const express = require('express')
+const cors = require('cors')
+const db = require('./db')
+
+const restaurantRoutes = require('./routes/restaurant')
+const forgotRestRoutes = require('./routes/forgot_otp_restaurant')
+const tableRoutes = require('./routes/table')
+>>>>>>> origin/main
 
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
+<<<<<<< HEAD
 const port = process.env.PORT || 5000
 
 //Define all routes
@@ -31,4 +45,22 @@ app.get('/', (req,res)=>{
 
 app.listen(port,()=> {
     console.log(`Server is  Running  on - http://localhost:${port}`)
+=======
+const port = process.env.PORT
+
+app.use('/restaurant',restaurantRoutes)
+app.use('/forgototp',forgotRestRoutes)
+app.use('/restauranttable',tableRoutes)
+
+app.get('/',(req,res)=>{
+    res.send("Hello World")
+})
+
+app.get('/test',(req,res)=>{
+    res.send("Test done")
+})
+
+app.listen(port,()=>{
+    console.log(`Server is running on: http://localhost:${port}`)
+>>>>>>> origin/main
 })
