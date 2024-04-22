@@ -35,12 +35,15 @@ router.get('/viewsingletable/:tid', async (req, res) => {
     const tid = req.params.tid;
 
     try {
-        const table = await Table.findOne({ _id: tid }).populate('Restaurant_Id');
+        
+        const table = await Table.findOne({ Restaurant_Id: tid })
         if (!table) {
             return res.status(404).json({ message: 'Table not found' });
         }
         res.json(table);
     } catch (error) {
+        console.error('Error finding table:', error); 
+
         res.status(500).json({ error: error.message });
     }
 });

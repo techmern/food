@@ -1,5 +1,6 @@
 const express = require('express');
 const Restaurants = require('../models/Restaurants');
+const Table = require('../models/Table');
 const router = express.Router();
 
 
@@ -53,6 +54,8 @@ router.get('/singlerestaurant/:rid', async (req, res) => {
         res.status(500).json({ 'Error': error })
     }
 })
+
+
 
 
 module.exports = router
